@@ -51,12 +51,31 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
-Create the name of the service account to use
+Create the name of the service accounts
 */}}
-{{- define "checkmk.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "checkmk.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
-{{- end }}
+{{- define "checkmk.serviceAccountName.checkmk" -}}
+{{- if .Values.serviceAccount.create -}}
+    {{ default (print (include "checkmk.fullname" .) "-checkmk") .Values.serviceAccount.name }}
+{{- else -}}
+    {{ default "default" .Values.serviceAccount.name }}
+{{- end -}}
+{{- end -}}
+
+{{- define "checkmk.serviceAccountName.clusterCollector" -}}
+    {{ print (include "checkmk.fullname" .) "-cluster-collector" }}
+{{- end -}}
+
+{{- define "checkmk.serviceAccountName.nodeCollector.containerMetricsCollector" -}}
+    {{ print (include "checkmk.fullname" .) "-node-collector-container-metrics" }}
+{{- end -}}
+
+{{- define "checkmk.serviceAccountName.nodeCollector.machineSectionsCollector" -}}
+    {{ print (include "checkmk.fullname" .) "-node-collector-machine-sections" }}
+{{- end -}}
+
+{{/*
+Allow KubeVersion to be overridden
+*/}}
+{{- define "checkmk.kubeVersion" -}}
+    {{- default .Capabilities.KubeVersion.Version .Values.kubeVersionOverride -}}
+{{- end -}}
