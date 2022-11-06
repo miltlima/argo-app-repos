@@ -1,17 +1,23 @@
-apiVersion: v1
-appVersion: 1.4.0p26
-description: check_mk monitoring
-home: https://mathias-kettner.de/check_mk.html
-icon: http://git.mathias-kettner.de/git/?p=check_mk.git;a=blob_plain;f=web/htdocs/images/logo_mk.png;h=f41c2227828b79c035fa2e2d3fba5ec939c6f2c3;hb=HEAD
-keywords:
-- check_mk
-- nagios
-- monitoring
-maintainers:
-- email: junaid18183@gmail.com
-  name: junaid18183
-name: check-mk
-sources:
-- https://github.com/kubernetes/charts
-- http://git.mathias-kettner.de/git/
-version: 0.2.1
+apiVersion: v2
+name: checkmk
+description: A Helm chart for Kubernetes
+
+# A chart can be either an 'application' or a 'library' chart.
+#
+# Application charts are a collection of templates that can be packaged into versioned archives
+# to be deployed.
+#
+# Library charts provide useful utilities or functions for the chart developer. They're included as
+# a dependency of application charts to inject those utilities and functions into the rendering
+# pipeline. Library charts do not define any templates and therefore cannot be deployed.
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
+version: 0.1.6
+
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application. Versions are not expected to
+# follow Semantic Versioning. They should reflect the version the application is using.
+appVersion: 1.16
