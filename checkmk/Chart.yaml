@@ -1,8 +1,0 @@
-apiVersion: v2
-appVersion: 1.1.0
-description: Helm chart for Checkmk - Your complete IT monitoring solution
-icon: https://checkmk.com/application/files/thumbnails/low_res/9515/9834/3872/checkmk_icon_main.png
-kubeVersion: '>=1.19.0-0'
-name: checkmk
-type: application
-version: 1.1.0
